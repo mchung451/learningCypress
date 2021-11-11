@@ -1,0 +1,32 @@
+{
+    "article": {
+        "id": 1686,
+        "slug": "This-is-a-title-2-801",
+        "title": "This is a title #2",
+        "description": "This is a description",
+        "body": "This is a body of the article",
+        "createdAt": "2021-11-11T10:04:28.637Z",
+        "updatedAt": "2021-11-11T10:04:28.638Z",
+        "authorId": 801,
+        "tagList": [],
+        "author": {
+            "username": "michael1234",
+            "bio": null,
+            "image": "https://api.realworld.io/images/smiley-cyrus.jpeg"
+        },
+        "comments": [],
+        "favoritedBy": [
+            {
+                "id": 801,
+                "email": "michael1234@gmail.com",
+                "username": "michael1234",
+                "password": "$2a$10$fwuj9H3KlGmNmyWl9Y8cO.nld6Vmguaj/L3wGcmLlT82HiBTcNc/O",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            }
+        ],
+        "favorited": true,
+        "favoritesCount": 2
+    }
+}
