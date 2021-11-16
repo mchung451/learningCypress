@@ -26,16 +26,33 @@
 
 Cypress.Commands.add('creatingNewAccount', () => {
     cy.visit('/register')
-    cy.get('[placeholder="Username"]').type('michael1234')
-    cy.get('[placeholder="Email"]').type('michael1234@gmail.com')
-    cy.get('[placeholder="Password"]').type('password123')
+    cy.get('[placeholder="Username"]').type('mike')
+    cy.get('[placeholder="Email"]').type('mike@gmail.com')
+    cy.get('[placeholder="Password"]').type('mike')
     cy.get('form').submit()
 })
 
 
 Cypress.Commands.add('loginToApplication', () => {
-    cy.visit('/login')
-    cy.get('[placeholder="Email"]').type('michael1234@gmail.com')
-    cy.get('[placeholder="Password"]').type('password123')
-    cy.get('form').submit()
+
+    const userCredentials = {
+        "user": {
+            "email": Cypress.env('username'),
+            "password": Cypress.env('password')
+        }
+    }
+
+    cy.request("POST", Cypress.env('apiUrl') + 'api/users/login', userCredentials)
+            .its('body').then(body => {
+                const token = body.user.token
+                
+                // Saving the token as cypress alias 'token'
+                cy.wrap(token).as('token')
+
+                cy.visit('/', {
+                    onBeforeLoad (win){
+                        win.localStorage.setItem('jwtToken', token)
+                    }
+                }) 
+            })
 })
